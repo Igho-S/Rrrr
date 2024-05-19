@@ -4,21 +4,20 @@
 #include <math.h>
 #include "Sourse.h"
 #include "RBTree1.h"
-#include <random>
 #pragma warning(disable : 4996)
 
-// #define BSTREE_EXCEPTION_BAD_INDEX "\nException: key not found.\n"
+// #define BSTREE_EXCEPTION_BAD_INDEX "\nИсключение: ключ не найден.\n"
 #ifndef BSTREE_EXCEPTION_BAD_INDEX
-#define BSTREE_EXCEPTION_BAD_INDEX "\nException: key not found.\n"
+#define BSTREE_EXCEPTION_BAD_INDEX "\nИсключение: ключ не найден.\n"
 #endif
-// #define BSTREE_EXCEPTION_ITERATOR_OUT_OF_TREE "\nException: iterator not set.\n"
+// #define BSTREE_EXCEPTION_ITERATOR_OUT_OF_TREE "\nИсключение: итератор не установлен.\n"
 #ifndef BSTREE_EXCEPTION_ITERATOR_OUT_OF_TREE
-#define BSTREE_EXCEPTION_ITERATOR_OUT_OF_TREE "\nException: iterator not set.\n"
+#define BSTREE_EXCEPTION_ITERATOR_OUT_OF_TREE "\nИсключение: итератор не установлен.\n"
 #endif
 
-// #define BSTREE_EXCEPTION_COPY_NULLPTR "\nException: root = nullptr.\n"
+// #define BSTREE_EXCEPTION_COPY_NULLPTR "\nИсключение: root = nullptr.\n"
 #ifndef BSTREE_EXCEPTION_COPY_NULLPTR
-#define BSTREE_EXCEPTION_COPY_NULLPTR "\nException: root = nullptr.\n"
+#define BSTREE_EXCEPTION_COPY_NULLPTR "\nИсключение: root = nullptr.\n"
 #endif
 
 using namespace std;
@@ -33,41 +32,41 @@ void test_ord(int n);
 
 void PrintMenu()
 {
-    printf("\n\n\t----------------------------------------MENU----------------------------------------------\n");
-    printf("\t1) Constructor\n");
-    printf("\t2) Copy Constructor\n");
-    printf("\t3) Destructor\n");
-    printf("\t4) Query tree size\n");
-    printf("\t5) Clear tree\n");
-    printf("\t6) Check if tree is empty\n");
-    printf("\t7) Read data by key\n");
-    printf("\t8) Write data by key\n");
-    printf("\t9) Include data with given key\n");
-    printf("\t10) Remove data with given key\n");
-    printf("\t12) Request forward iterator begin()\n");
-    printf("\t13) Request reverse iterator rbegin()\n");
-    printf("\t14) Request 'unset' forward iterator end()\n");
-    printf("\t15) Request 'unset' reverse iterator rend()\n");
-    printf("\t16) Additional operation: determine the ordinal number for an element with a given key\n");
-    printf("\t------------------------------------ITERATORS---------------------------------------------\n");
-    printf("\t17) Read access operation to the current value *\n");
-    printf("\t18) Write access operation to the current value *\n");
-    printf("\t19) Increment operation to move to the next (to the previous for reverse iterator) value in the tree ++\n");
-    printf("\t20) Decrement operation to move to the previous (to the next for reverse iterator) value in the tree --\n");
-    printf("\t21) Check equality of identical iterators ==\n");
-    printf("\t22) Check inequality of identical iterators !=\n");
-    printf("\t-------------------------------------DEBUGGING---------------------------------------------\n");
-    printf("\t23) Request the number of tree elements viewed by the previous operation\n");
-    printf("\t24) Display the tree on the screen\n");
-    printf("\t25) Fill the tree with standard keys\n");
-    printf("\t26) Testing: Fill n random keys, deletion, insertion, search\n");
-    printf("\t27) Testing (degenerate): Fill n keys, deletion, insertion, search\n");
+    printf("\n\n\t-----------------------------------------МЕНЮ----------------------------------------------\n");
+    printf("\t1) Конструктор\n");
+    printf("\t2) Конструктор копирования\n");
+    printf("\t3) Деструктор\n");
+    printf("\t4) Опрос размера дерева\n");
+    printf("\t5) Очистка дерева\n");
+    printf("\t6) Проверка дерева на пустоту\n");
+    printf("\t7) Чтение данных по ключу\n");
+    printf("\t8) Запись данных по ключу\n");
+    printf("\t9) Включение данных с заданным ключом\n");
+    printf("\t10) Удаление данных с заданным ключом\n");
+    printf("\t12) Запрос прямого итератора begin()\n");
+    printf("\t13) Запрос обратного итератора rbegin()\n");
+    printf("\t14) Запрос «неустановленного» прямого итератора end()\n");
+    printf("\t15) Запрос «неустановленного» обратного итератора rend()\n");
+    printf("\t16) Дополнительная операция: определение порядкового номера для элемента с заданным ключом\n");
+    printf("\t------------------------------------ИТЕРАТОРЫ---------------------------------------------\n");
+    printf("\t17) Операция доступа по чтению к текущему значению *\n");
+    printf("\t18) Операция доступа по записи к текущему значению *\n");
+    printf("\t19) Операция инкремента для перехода к следующему (к предыдущему для обратного итератора) значению в дереве++\n");
+    printf("\t20) Операция декремента для перехода к предыдущему (к следующему для обратного итератора) значению в дереве--\n");
+    printf("\t21) Проверка равенства однотипных итераторов ==\n");
+    printf("\t22) Проверка неравенства однотипных итераторов !=\n");
+    printf("\t-------------------------------------ОТЛАДКА----------------------------------------------\n");
+    printf("\t23) Запрос числа элементов дерева, просмотренных предыдущей операцией\n");
+    printf("\t24) Вывод на экран дерева\n");
+    printf("\t25) Заполнить дерево стандартными ключами\n");
+    printf("\t26) Тестирование: Заполнить n случайных ключей, удаление, вставка, поиск\n");
+    printf("\t27) Тестирование (вырожденное): Заполнить n ключей, удаление, вставка, поиск\n");
 }
 
 int MenuUserInput()
 {
     int i = 0;
-    printf("\nSelect a menu option: ");
+    printf("\nВыберите вариант меню: ");
     scanf("%d", &i);
     return i;
 }
@@ -75,7 +74,7 @@ int MenuUserInput()
 int InputValue()
 {
     int t;
-    printf("Enter a value: ");
+    printf("Введите значение: ");
     std::cin >> t;
     return t;
 }
@@ -83,7 +82,7 @@ int InputValue()
 int InputIndex()
 {
     int t;
-    printf("Enter the key number: ");
+    printf("Введите номер ключа: ");
     std::cin >> t;
     return t;
 }
@@ -132,7 +131,7 @@ int main()
                 UBSTree = nullptr;
                 break;
             case 4:
-                printf("%li\n", UBSTree->GetSizeT()); // use longint so the sizes match
+                printf("%i\n", UBSTree->GetSizeT());
                 break;
             case 5:
                 UBSTree->ClearTree();
@@ -178,11 +177,11 @@ int main()
             case 16:
                 try
                 {
-                    printf("%li\n", UBSTree->FindOrder(InputIndex())); // likewise here longint
+                    printf("%i\n", UBSTree->FindOrder(InputIndex()));
                 }
                 catch (int)
                 {
-                    printf("Exception: key not found.\n");
+                    printf("Исключение: ключ не найден.\n");
                 }
                 break;
             case 17:
@@ -269,13 +268,13 @@ int main()
                 }
                 break;
             case 23:
-                printf("%li\n", UBSTree->GetCounter()); // and here
+                printf("%i\n", UBSTree->GetCounter());
                 break;
             case 24:
-                printf("\n//-------Tree 1---------//\n");
+                printf("\n//-------Дерево 1---------//\n");
                 printf("\n\n");
                 UBSTree->Print();
-                printf("\n//-------Tree 2---------//\n");
+                printf("\n//-------Дерево 2---------//\n");
                 if (UBSTree2 != nullptr)
                     UBSTree2->Print();
                 break;
